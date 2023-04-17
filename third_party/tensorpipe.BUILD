@@ -1,5 +1,5 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
-load("@//third_party:substitution.bzl", "header_template_rule")
+load("@pytorch//third_party:substitution.bzl", "header_template_rule")
 
 LIBUV_COMMON_SRCS = [
     "third_party/libuv/src/fs-poll.c",
@@ -162,8 +162,8 @@ cc_library(
 
 cc_library(
     name = "tensorpipe_cuda",
-    srcs = TENSORPIPE_CUDA_SOURCES,
-    hdrs = TENSORPIPE_CUDA_HEADERS + [":tensorpipe_cuda_config_header"],
+    srcs = glob(TENSORPIPE_CUDA_SOURCES),
+    hdrs = glob(TENSORPIPE_CUDA_HEADERS) + [":tensorpipe_cuda_config_header"],
     includes = [
         ".",
     ],
